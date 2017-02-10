@@ -1,10 +1,19 @@
-class ExampleApi
+require 'pry'
+require 'rest-client'
+require 'json'
+
+class Fetcher
 
   attr_reader :url, :music_data
 
   def initialize(url)
     @url = url
     @music_data = JSON.parse(RestClient.get(url))
+  end
+
+  def 
+  def return_the_article
+
   end
 
   def make_albums
@@ -18,3 +27,13 @@ class ExampleApi
   end
 
 end
+
+
+binding.pry
+
+class Model
+
+
+end
+
+article 
