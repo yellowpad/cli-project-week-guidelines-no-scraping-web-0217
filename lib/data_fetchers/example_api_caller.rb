@@ -1,39 +1,26 @@
-require 'pry'
-require 'rest-client'
-require 'json'
-
 class Fetcher
 
-  attr_reader :url, :music_data
+  attr_reader :url, :article_data, :input
 
-  def initialize(url)
+  def initialize(url, input)
     @url = url
-    @music_data = JSON.parse(RestClient.get(url))
+    @input = input
+    @article_data = JSON.parse(RestClient.get(url).body)
   end
 
-  def 
-  def return_the_article
 
-  end
+  def make_articles
 
-  def make_albums
-    albums = []
-    all_albums = music_data["tracks"]["items"]
-    all_albums.each do |album|
-      album_name = album["name"]
-      albums << ExampleModel.new(album_name)
+    articles = []
+    result = []
+    all_articles = self.article_data["response"]["results"]
+    articles << all_articles
+    all_articles.each do |hash|
+        article_name = hash["webTitle"]
+        article_url = hash["webUrl"]
+        articles << Article.new(article_name, article_url)
     end
-    albums
   end
 
-end
-
-
-binding.pry
-
-class Model
-
 
 end
-
-article 
